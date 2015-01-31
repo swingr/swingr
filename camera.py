@@ -13,12 +13,12 @@ cam.set(10, -1)
 frames = []
 swing = {"centers" : []}
 raw_input("press enter to start recording")
-#for i in range(300):
-while True:
+for i in range(200):
+#while True:
     _, img = cam.read()
-#    frames.append(img)
+    frames.append(img)
 
-#for img in frames:
+for img in frames:
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     xavg, yavg = None, None
 
