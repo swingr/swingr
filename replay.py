@@ -8,11 +8,16 @@ import sklearn
 import json
 import time
 import requests
+import followthrough
 
 s = open("swing.json", "r")
 swing = json.loads(s.read())
 scenter_x = [line[0] for line in swing["centers"]]
 scenter_y = [line[1] for line in swing["centers"]]
+
+f = open("ip", "r")
+ip = "http://" + f.read().replace("\n", "")
+f.close()
 
 totals = []
 for i in range(10):
@@ -69,8 +74,8 @@ for i in range(10):
         abs(z2[1]-z3[1])+ abs(z2[2]-z3[2])
     totals.append(max((200-total)/2, 0))
 avg = np.mean(totals)
-ip = "http://138.51.202.24:5000"
-r = requests.get(ip + "/score/" + str(avg))
+print followthrough.followthrough()
+requests.get(ip + "/score/" + str(avg))
 if avg < 20:
     requests.get(ip + "/existence")
 elif avg < 40:

@@ -6,10 +6,11 @@ import cv2
 import numpy as np
 import json
 import requests
+import sys
 
-ip = "http://138.51.202.24:5000"
+ip = "http://" + sys.argv[1]
 
-cam = cv2.VideoCapture(1)
+cam = cv2.VideoCapture(0)
 
 cam.set(10, -1)
 
