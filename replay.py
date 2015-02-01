@@ -29,21 +29,19 @@ for i in range(10):
     y2, y3 = [], []
     for i in range(min(len(scenter_y), len(mcenter_y))):
         if mcenter_x[i] and mcenter_y[i]:
-            if scenter_x[i] and scenter_y[i]:
-                dists.append(sqrt((scenter_y[i] - mcenter_y[i]) ** 2 + (scenter_y[i]
-                    - mcenter_y[i]) ** 2))
-                if scenter_y[i] > 250:
-                    x.append(scenter_x[i])
-                    y.append(scenter_y[i])
-                if mcenter_y[i] > 250:
-                    y1.append(mcenter_y[i])
-                    x1.append(mcenter_x[i])
-                if scenter_y[i] < 250:
-                    x2.append(scenter_x[i])
-                    y2.append(scenter_y[i])
-                if mcenter_y[i] < 250:
-                    y3.append(mcenter_y[i])
-                    x3.append(mcenter_x[i])
+            if mcenter_y[i] > 250:
+                y1.append(mcenter_y[i])
+                x1.append(mcenter_x[i])
+            if mcenter_y[i] < 250:
+                y3.append(mcenter_y[i])
+                x3.append(mcenter_x[i])
+        if scenter_x[i] and scenter_y[i]:
+            if scenter_y[i] > 250:
+                x.append(scenter_x[i])
+                y.append(scenter_y[i])
+            if scenter_y[i] < 250:
+                x2.append(scenter_x[i])
+                y2.append(scenter_y[i])
     d= -1
     z = np.polyfit(np.array(x[:d]), np.array(y[:d]), 2)
     f = np.poly1d(z)
