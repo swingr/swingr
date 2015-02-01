@@ -38,9 +38,9 @@ def followthrough():
 	deviant = int((q1 + q2 + q3 + q4)*buffer)
 
 	aq1 = 0.24
-	aq2 = 0.47
+	aq2 = 0.35
 	aq3 = 0.19
-	aq4 = 0.09
+	aq4 = 0.06
 
 	if (q2 < ((total * aq2) - buffer)) or (q2 > ((total * aq2) + buffer)):
 		return False

@@ -74,8 +74,8 @@ for i in range(10):
         abs(z2[1]-z3[1])+ abs(z2[2]-z3[2])
     totals.append(max((200-total)/2, 0))
 avg = np.mean(totals)
-print followthrough.followthrough()
-requests.get(ip + "/score/" + str(avg))
+print avg
+requests.get(ip + "/score/" + str(avg) + "/")
 if not followthrough.followthrough():
     requests.get(ip + "/follow/")
 elif avg < 10:
@@ -86,8 +86,6 @@ elif avg < 50:
     requests.get(ip + "/choke/")
 elif avg < 70:
     requests.get(ip + "/shoulders/")
-elif avg < 80:
-    requests.get(ip + "/nice/")
 else:
-    requests.get(ip + "/frustrating")
+    requests.get(ip + "/nice/")
 print("done")

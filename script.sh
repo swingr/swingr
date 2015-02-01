@@ -2,7 +2,7 @@
 echo "What is the server address"
 read ip
 
-curl http://$ip/start > /dev/null
+curl http://$ip/start/ > /dev/null
 echo $ip > ip
 
 number=1

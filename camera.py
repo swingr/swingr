@@ -17,18 +17,18 @@ cam.set(10, -1)
 frames = []
 swing = {"centers" : []}
 raw_input("press enter to start recording")
-requests.get(ip + "/send/" + "Swing")
+requests.get(ip + "/send/Swing/")
 for i in range(200):
 #while True:
     _, img = cam.read()
     frames.append(img)
 
-requests.get(ip + "/send/" + "Done")
+requests.get(ip + "/send/Done/")
 for img in frames:
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     xavg, yavg = None, None
 
-    green_low = np.array([50, 90, 100])
+    green_low = np.array([50, 225, 100])
     green_high = np.array([100, 255, 255])
     green_mask = cv2.inRange(hsv, green_low, green_high)
 
