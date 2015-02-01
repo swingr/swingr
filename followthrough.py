@@ -8,7 +8,7 @@ import json
 import time
 
 def followthrough():
-	s = open("follow.json", "r")
+	s = open("swing.json", "r")
 	swing = json.loads(s.read())
 	scenter_x = [line[0] for line in swing["centers"]]
 	scenter_y = [line[1] for line in swing["centers"]]
@@ -41,20 +41,10 @@ def followthrough():
 	aq2 = 0.47
 	aq3 = 0.19
 	aq4 = 0.09
-	print q1,q2,q3,q4
-	print total 
-	print buffer
-	print "\n"
 
 	if (q2 < ((total * aq2) - buffer)) or (q2 > ((total * aq2) + buffer)):
-		print "q2"
-		print (total * aq2)
-		print q2
 		return False
 	if (q4 < ((total * aq4) - buffer)) or (q4 > ((total * aq4) + buffer)):
-		print "q4"
-		print (total * aq4)
-		print q4
 		return False
 	else:
 		return True
