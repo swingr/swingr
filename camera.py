@@ -5,6 +5,9 @@ sys.path.append('/usr/local/lib/python2.7/site-packages')
 import cv2
 import numpy as np
 import json
+import requests
+
+ip = "http://138.51.202.24:5000"
 
 cam = cv2.VideoCapture(1)
 
@@ -13,11 +16,13 @@ cam.set(10, -1)
 frames = []
 swing = {"centers" : []}
 raw_input("press enter to start recording")
+requests.get(ip + "/send/" + "Swing")
 for i in range(200):
 #while True:
     _, img = cam.read()
     frames.append(img)
 
+requests.get(ip + "/send/" + "Done")
 for img in frames:
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     xavg, yavg = None, None
@@ -49,8 +54,8 @@ for img in frames:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-print json.dumps(swing)
 f = open("swing.json", "w")
 f.write(json.dumps(swing))
+f.close()
 cam.release()
 cv2.destroyAllWindows()

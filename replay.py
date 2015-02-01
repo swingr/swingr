@@ -7,6 +7,7 @@ import numpy as np
 import sklearn
 import json
 import time
+import requests
 
 s = open("swing.json", "r")
 swing = json.loads(s.read())
@@ -67,6 +68,17 @@ for i in range(10):
     total = abs(z[0]-z1[0]) + abs(z[1]-z1[1]) + abs(z[2]-z1[2])+ abs(z2[0]-z3[0])+\
         abs(z2[1]-z3[1])+ abs(z2[2]-z3[2])
     totals.append(max((200-total)/2, 0))
-print np.mean(totals)
-
-plt.show()
+avg = np.mean(totals)
+ip = "http://138.51.202.24:5000"
+r = requests.get(ip + "/score/" + str(avg))
+if avg < 20:
+    requests.get(ip + "/existence")
+elif avg < 40:
+    requests.get(ip + "/frustrating")
+elif avg < 60:
+    requests.get(ip + "/choke")
+elif avg < 80:
+    requests.get(ip + "/shoulders")
+else:
+    requests.get(ip + "/frustrating")
+print("done")
