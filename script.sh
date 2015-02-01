@@ -18,7 +18,7 @@ do
 	if [ "$quit" == "y" ]; then
 		echo "What is your phone number"
 		read number
-		curl http://$ip/result/$number/
+		curl http://$ip/result/+1$number/
 		exit
 	fi
 done
